@@ -15,7 +15,7 @@
               $(function(){
       $(".btnDolar").click(function(){
           $.getJSON('https://mindicador.cl/api', function(data) {
-              var valorEnPesos = 105990 / data.dolar.valor;
+              var valorEnPesos = 175000 / data.dolar.valor;
               $('#precio').text('$' + valorEnPesos.toFixed(2)); // Ajusta la cantidad de decimales según sea necesario
           }).fail(function() {
               console.log('Error al consumir la API!');
@@ -55,7 +55,6 @@
             </ul>
             <a class="btn btn-outline-success btn-margin-right" href="2.1PaginaRegistro.html" role="button" style="border-color: white;">Registro</a>
             <a class="btn btn-outline-success" href="1.9Carrito.html" role="button" style="border-color: white;">Carrito 🛒</a>
-            </form>
           </div>
         </div>
       </nav>
@@ -63,23 +62,24 @@
 <div class="container">
   <div class="row align-items-center">
       <div class="col-md-6">
-          <img src="calzado-air-jordan-1 (1).png" class="img-fluid img-responsive" alt="Nike Air Force 1">
+          <img src="Nike Air More Uptempo.png" class="img-fluid img-responsive" alt="Nike Air Force 1">
       </div>
       <div class="col-md-6">
-          <h2>Air Jordan 1 Mid</h2>
-          <p><strong>Marca: Nike-jordan</strong></p>
-          <h1 class="fw-bold" id="precio">$105.990</h1>
+          <h2>Nike Air More Uptempo '96</h2>
+          <p><strong>Marca: Nike</strong></p>
+          <h1 class="fw-bold" id="precio">$175.000</h1>
           <div class="container">
             <div class="row">
               <div class="col-md-4">
                 <h5>Medida</h5>
                 <select class="form-select" aria-label="Talla del Zapatilla">
-                  <option selected>7 US</option>
+                  <option>10 US</option>
+                  <option selected>10.5 US</option>
                 </select>
               </div>
             </div>
           </div>
-          <p><strong>Descripción:</strong> Las Air Jordan 1 Mid aportan un estilo de cancha completa y una comodidad de primera a un look icónico. Su unidad Air-Sole amortigua el juego en la pista, mientras que el cuello acolchado proporciona una sensación de apoyo.</p>
+          <p><strong>Descripción:</strong> La clave está en el A-I-R. El Air More Uptempo '96 renueva un original que ha reinado por más de 20 años. Con un diseño inspirado en el estilo de básquetbol de alto vuelo y el arte del graffiti de los años 90, este calzado deportivo no puede dejar de ser el centro de atención.</p>
           <!-- Botón Agregar al Carrito -->
           <button class="btn btn-danger">Agregar al Carrito 🛒</button>
           <button class="btnDolar btn-danger">Cambiar a dolares</button>
