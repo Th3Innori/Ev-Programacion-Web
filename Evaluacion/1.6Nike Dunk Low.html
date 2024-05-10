@@ -12,17 +12,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <script>
-              $(function(){
-      $(".btnDolar").click(function(){
-          $.getJSON('https://mindicador.cl/api', function(data) {
-              var valorEnPesos = 100000 / data.dolar.valor;
-              $('#precio').text('$' + valorEnPesos.toFixed(2)); // Ajusta la cantidad de decimales según sea necesario
-          }).fail(function() {
-              console.log('Error al consumir la API!');
+      $(function(){
+          var originalText = $('#precio').text(); // Guarda el texto original
+          
+          $(".btnDolar").click(function(){
+              if ($(this).hasClass('cambiado')) { // Verifica si se ha cambiado
+                  $('#precio').text(originalText); // Restaura el texto original
+                  $(this).removeClass('cambiado'); // Remueve la clase 'cambiado'
+              } else {
+                  $.getJSON('https://mindicador.cl/api', function(data) {
+                      var valorEnPesos = 100000 / data.dolar.valor;
+                      $('#precio').text('$' + valorEnPesos.toFixed(2)); // Ajusta la cantidad de decimales según sea necesario
+                  }).fail(function() {
+                      console.log('Error al consumir la API!');
+                  });
+                  $(this).addClass('cambiado'); // Agrega la clase 'cambiado'
+              }
           });
       });
-  });
-    </script>
+      </script>
   </head>
 </head>
 <body>
@@ -82,7 +90,7 @@
           <p><strong>Descripción:</strong> El icono del baloncesto de los 80 vuelve con detalles clásicos y un estilo de baloncesto retro. Canalizando el estilo vintage de vuelta a las calles, su cuello acolchado y de corte bajo te permite llevar tu juego a cualquier parte con comodidad.</p>
           <!-- Botón Agregar al Carrito -->
           <button class="btn btn-danger">Agregar al Carrito 🛒</button>
-          <button class="btnDolar btn-danger">Cambiar a dolares</button>
+          <button class="btnDolar btn-danger">Cambio de moneda</button>
           <br>
           <br>
       </div>
