@@ -1,0 +1,37 @@
+h1 {
+  font-family: Impact;
+  font-weight: 200;
+  font-style: normal;
+}
+
+#info {
+  color: rgba(60, 58, 58, 0.67);
+}
+
+#precio{
+  font-family: Arial;
+}
+
+.btn-margin-right {
+  margin-right: 10px; /* Puedes ajustar el valor según la separación deseada */
+}
+.centered-content {
+  text-align: center; /* Alinea el contenido al centro */
+  margin-top: 20px; /* Espacio superior para separar del navbar */
+}
+
+#cr {
+  font-weight: 200;
+  font-style: normal;
+}
+
+.btn.btn-outline-success {
+  color: rgb(255, 255, 255); /* Color del texto por defecto */
+  border-color: rgb(255, 255, 255); /* Color del borde por defecto */
+}
+
+.btn.btn-outline-success:hover {
+  color: black; /* Color del texto al pasar el cursor por encima */
+  border-color: rgb(255, 255, 255); /* Color del borde al pasar el cursor por encima */
+}
+

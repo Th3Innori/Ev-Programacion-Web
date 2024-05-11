@@ -1,0 +1,24 @@
+
+.form-register{
+    width: 1000px;
+    background-color: rgb(255, 255, 255);
+    padding: 30px;
+    border: 2px solid;
+}
+
+.container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.btn.btn-outline-success {
+    color: rgb(255, 255, 255); /* Color del texto por defecto */
+    border-color: rgb(255, 255, 255); /* Color del borde por defecto */
+  }
+  
+  .btn.btn-outline-success:hover {
+    color: black; /* Color del texto al pasar el cursor por encima */
+    border-color: rgb(255, 255, 255); /* Color del borde al pasar el cursor por encima */
+  }
