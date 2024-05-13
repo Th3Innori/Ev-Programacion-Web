@@ -69,20 +69,20 @@
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                       <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                        onclick="decrementQuantity()">
                         <i class="fas fa-minus"></i>
                       </button>
       
-                      <input id="form1" min="0" name="quantity" value="1" type="number"
-                        class="form-control form-control-sm" />
+                      <input id="quantityInput" min="0" name="quantity" value="1" type="number"
+                        class="form-control form-control-sm" onchange="calculatePrice()" />
       
                       <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                        onclick="incrementQuantity()">
                         <i class="fas fa-plus"></i>
                       </button>
                     </div>
                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                      <h5 class="mb-0">$100.000</h5>
+                      <h5 class="mb-0" id="precioProducto">$100.000</h5>
                     </div>
                     <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                       <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
@@ -94,16 +94,16 @@
               <div class="card mb-4">
                 <div class="card-body p-4 d-flex flex-row">
                   <div data-mdb-input-init class="form-outline flex-fill">
-                    <input type="text" id="form1" class="form-control form-control-lg" />
-                    <label class="form-label" for="form1">Codigo de Descuento</label>
+                    <input type="text" id="cuponInput" class="form-control form-control-lg" />
+                    <label class="form-label" for="cuponInput">Codigo de Descuento</label>
                   </div>
-                  <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-dark btn-lg ms-3">Aplicar</button>
+                  <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-dark btn-lg ms-3" onclick="applyCoupon()">Aplicar</button>
                 </div>
               </div>
       
               <div class="card">
                 <div class="card-body">
-                  <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-block btn-lg">Proceder Pago</button>
+                  <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-block btn-lg" onclick="proceedToPayment()">Proceder Pago</button>
                 </div>
               </div>
       
@@ -111,6 +111,51 @@
           </div>
         </div>
       </section>
-    </div>
+
+<script>
+    var cuponUtilizado = false;
+
+    function incrementQuantity() {
+        var input = document.getElementById('quantityInput');
+        input.stepUp();
+        calculatePrice();
+    }
+
+    function decrementQuantity() {
+        var input = document.getElementById('quantityInput');
+        input.stepDown();
+        calculatePrice();
+    }
+
+    function calculatePrice() {
+        var quantity = document.getElementById('quantityInput').value;
+        var precioUnitario = 100000; // Precio unitario del producto
+        var total = precioUnitario * quantity;
+        document.getElementById('precioProducto').textContent = '$' + total.toLocaleString();
+    }
+
+    function applyCoupon() {
+        if (!cuponUtilizado) {
+            var cupon = document.getElementById('cuponInput').value.toLowerCase(); // Convertir a minúsculas
+            if (cupon === "donwest") {
+                var precioProducto = parseInt(document.getElementById('precioProducto').textContent.slice(1).replace(',', ''));
+                var descuento = precioProducto * 0.05; // Calculando el 5% de descuento
+                var precioFinal = precioProducto - descuento;
+                document.getElementById('precioProducto').textContent = '$' + precioFinal.toLocaleString();
+                cuponUtilizado = true;
+            } else {
+                alert("El cupón ingresado no es válido.");
+            }
+        } else {
+            alert("Ya has utilizado un cupón.");
+        }
+    }
+
+    function proceedToPayment() {
+        // Aquí deberías implementar la lógica para proceder al pago
+        alert("Procediendo al pago...");
+    }
+</script>
 </body>
 </html>
+
